@@ -6,6 +6,6 @@ variable "yandex_folder_id" {
   default = "b1g27gpcstr1l1bi3a22"
 }
 
-variable "YC_CREDENTIAL" {
-    type = string
+variable "TF_VAR_YC_CREDENTIAL" {
+  type = string
 }
