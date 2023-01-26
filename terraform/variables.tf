@@ -9,3 +9,8 @@ variable "yandex_folder_id" {
 variable "TF_VAR_YC_CREDENTIAL" {
   type = string
 }
+
+variable "TFC_WORKSPACE_NAME" {
+  type    = string
+  default = ""
+}

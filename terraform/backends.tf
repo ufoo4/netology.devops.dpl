@@ -1,9 +1,9 @@
-terraform {
-  cloud {
-    organization = "netology-dpl"
+# terraform {
+#   cloud {
+#     organization = "netology-dpl"
 
-    workspaces {
-      name = "stage"
-    }
-  }
-}
+#     workspaces {
+#       name = "stage"
+#     }
+#   }
+# }

@@ -1,11 +1,11 @@
-module "networking" {
-  source           = "./networking"
-  vpc_cidr         = "10.123.0.0/16"
-  security_groups  = local.security_groups
-  public_sn_count  = 2
-  private_sn_count = 3
-  max_subnets      = 20
-  public_cidrs     = [for i in range(2, 255, 2) : cidrsubnet("10.123.0.0/16", 8, i)]
-  private_cidrs    = [for i in range(1, 255, 2) : cidrsubnet("10.123.0.0/16", 8, i)]
-  db_subnet_group  = true
+resource "yandex_vpc_network" "vpc-diploma" {
+  name = "vpc-diploma"
+}
+
+resource "yandex_vpc_subnet" "public" {
+  count          = length(local.networks)
+  v4_cidr_blocks = local.networks[count.index].subnet
+  zone           = local.networks[count.index].zone_name
+  network_id     = yandex_vpc_network.vpc-diploma.id
+  name           = "subnet-${local.networks[count.index].zone_name}"
 }
