@@ -13,12 +13,22 @@ provider "yandex" {
 }
 
 terraform {
-  cloud {
+  backend "remote" {
+    hostname = "app.terraform.io"
     organization = "netology-dpl"
 
     workspaces {
-      name = "stage"
+      prefix = "my-app-"
     }
   }
 }
 
+# terraform {
+#   cloud {
+#     organization = "netology-dpl"
+
+#     workspaces {
+#       name = "stage"
+#     }
+#   }
+# }
