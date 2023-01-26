@@ -31,12 +31,12 @@ resource "yandex_vpc_subnet" "public-subnet-b" {
   v4_cidr_blocks = ["192.168.11.0/24"]
 }
 
-resource "yandex_vpc_subnet" "public-subnet-c" {
-  name           = "public-c"
-  zone           = "ru-central1-c"
-  network_id     = "${yandex_vpc_network.net.id}"
-  v4_cidr_blocks = ["192.168.12.0/24"]
-}
+# resource "yandex_vpc_subnet" "public-subnet-c" {
+#   name           = "public-c"
+#   zone           = "ru-central1-c"
+#   network_id     = "${yandex_vpc_network.net.id}"
+#   v4_cidr_blocks = ["192.168.12.0/24"]
+# }
 
 # resource "yandex_vpc_subnet" "private-subnet-a" {
 #   name           = "private-a"
