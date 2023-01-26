@@ -1,63 +1,11 @@
-resource "yandex_vpc_network" "net" {
-  name = "net"
+module "networking" {
+  source           = "./networking"
+  vpc_cidr         = "10.123.0.0/16"
+  security_groups  = local.security_groups
+  public_sn_count  = 2
+  private_sn_count = 3
+  max_subnets      = 20
+  public_cidrs     = [for i in range(2, 255, 2) : cidrsubnet("10.123.0.0/16", 8, i)]
+  private_cidrs    = [for i in range(1, 255, 2) : cidrsubnet("10.123.0.0/16", 8, i)]
+  db_subnet_group  = true
 }
-
-# resource "yandex_vpc_gateway" "nat-instance" {
-#   name = "nat-instance"
-#   shared_egress_gateway {}
-# }
-
-# resource "yandex_vpc_route_table" "private-to-inet" {
-#   name = "private-inet"
-#   network_id = "${yandex_vpc_network.net.id}"
-
-#   static_route {
-#     destination_prefix = "0.0.0.0/0"
-#     gateway_id         = "${yandex_vpc_gateway.nat-instance.id}"
-#   }
-# }
-
-resource "yandex_vpc_subnet" "public-subnet-a" {
-  name           = "public-a"
-  zone           = "ru-central1-a"
-  network_id     = "${yandex_vpc_network.net.id}"
-  v4_cidr_blocks = ["192.168.10.0/24"]
-}
-
-resource "yandex_vpc_subnet" "public-subnet-b" {
-  name           = "public-b"
-  zone           = "ru-central1-b"
-  network_id     = "${yandex_vpc_network.net.id}"
-  v4_cidr_blocks = ["192.168.11.0/24"]
-}
-
-# resource "yandex_vpc_subnet" "public-subnet-c" {
-#   name           = "public-c"
-#   zone           = "ru-central1-c"
-#   network_id     = "${yandex_vpc_network.net.id}"
-#   v4_cidr_blocks = ["192.168.12.0/24"]
-# }
-
-# resource "yandex_vpc_subnet" "private-subnet-a" {
-#   name           = "private-a"
-#   zone           = "ru-central1-a"
-#   network_id     = "${yandex_vpc_network.net.id}"
-#   route_table_id = "${yandex_vpc_route_table.private-to-inet.id}"
-#   v4_cidr_blocks = ["192.168.20.0/24"]
-# }
-
-# resource "yandex_vpc_subnet" "private-subnet-b" {
-#   name           = "private-b"
-#   zone           = "ru-central1-b"
-#   network_id     = "${yandex_vpc_network.net.id}"
-#   route_table_id = "${yandex_vpc_route_table.private-to-inet.id}"
-#   v4_cidr_blocks = ["192.168.21.0/24"]
-# }
-
-# resource "yandex_vpc_subnet" "private-subnet-c" {
-#   name           = "private-c"
-#   zone           = "ru-central1-c"
-#   network_id     = "${yandex_vpc_network.net.id}"
-#   route_table_id = "${yandex_vpc_route_table.private-to-inet.id}"
-#   v4_cidr_blocks = ["192.168.22.0/24"]
-# }
