@@ -8,20 +8,20 @@ locals {
   networks = [
     {
       zone_name = "ru-central1-a"
-      subnet    = ["192.168.10.0/24"]
+      subnet    = ["10.0.10.0/24"]
     },
     {
       zone_name = "ru-central1-b"
-      subnet    = ["192.168.11.0/24"]
+      subnet    = ["10.0.11.0/24"]
     },
     {
       zone_name = "ru-central1-c"
-      subnet    = ["192.168.12.0/24"]
+      subnet    = ["10.0.12.0/24"]
     }
   ]
 
-  cloud_id  = "aje4o75no91tn71jgisd"
-  folder_id = "b1gurqobqm3qcn2l5eem"
+  cloud_id     = var.YANDEX_CLOUD_ID
+  folder_id    = var.YANDEX_FOLED_ID
   default_zone = local.networks.0.zone_name
   dns_zone     = "yc.complife.ru"
   cluster_name = "kube-cluster"

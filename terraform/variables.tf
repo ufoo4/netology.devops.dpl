@@ -1,8 +1,8 @@
-variable "yandex_cloud_id" {
+variable "YANDEX_CLOUD_ID" {
   default = "b1gffcps5oa5h9clc5o9"
 }
 
-variable "yandex_folder_id" {
+variable "YANDEX_FOLED_ID" {
   default = "b1g27gpcstr1l1bi3a22"
 }
 

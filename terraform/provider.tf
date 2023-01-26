@@ -7,9 +7,9 @@ terraform {
 }
 
 provider "yandex" {
-  cloud_id  = "${var.yandex_cloud_id}"
-  folder_id = "${var.yandex_folder_id}"
-  service_account_key_file = "${var.TF_VAR_YC_CREDENTIAL}"
-  zone      = local.default_zone
+  cloud_id                 = var.YANDEX_CLOUD_ID
+  folder_id                = var.YANDEX_FOLED_ID
+  service_account_key_file = var.TF_VAR_YC_CREDENTIAL
+  zone                     = local.default_zone
 }
 
