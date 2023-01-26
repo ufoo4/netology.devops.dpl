@@ -12,24 +12,3 @@ provider "yandex" {
   service_account_key_file = "${var.TF_VAR_YC_CREDENTIAL}"
 }
 
-terraform {
-  backend "remote" {
-    # hostname = "app.terraform.io"
-    organization = "netology-dpl"
-
-    workspaces {
-      prefix = ""
-    }
-  }
-}
-
-# terraform {
-#   cloud {
-#     organization = "netology-dpl"
-
-#     workspaces {
-#       name = "stage"
-#     }
-#   }
-# }
-
