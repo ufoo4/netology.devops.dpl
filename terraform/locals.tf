@@ -5,36 +5,20 @@ locals {
   #   trimprefix(terraform.workspace, "yc-")
   # )
 
-  networks = {
-    stage = [
-      {
-        zone_name = "ru-central1-a"
-        subnet    = ["10.0.10.0/24"]
-      },
-      {
-        zone_name = "ru-central1-b"
-        subnet    = ["10.0.11.0/24"]
-      },
-      {
-        zone_name = "ru-central1-c"
-        subnet    = ["10.0.12.0/24"]
-      }
-    ]
-    prod = [
-      {
-        zone_name = "ru-central1-a"
-        subnet    = ["10.0.20.0/24"]
-      },
-      {
-        zone_name = "ru-central1-b"
-        subnet    = ["10.0.21.0/24"]
-      },
-      {
-        zone_name = "ru-central1-c"
-        subnet    = ["10.0.22.0/24"]
-      }
-    ]
-  }
+  networks = [
+    {
+      zone_name = "ru-central1-a"
+      subnet    = ["10.0.10.0/24"]
+    },
+    {
+      zone_name = "ru-central1-b"
+      subnet    = ["10.0.11.0/24"]
+    },
+    {
+      zone_name = "ru-central1-c"
+      subnet    = ["10.0.12.0/24"]
+    }
+  ]
 
   # cloud_id     = var.YANDEX_CLOUD_ID
   # folder_id    = var.YANDEX_FOLDER_ID
