@@ -11,7 +11,11 @@ variable "TF_VAR_YC_CREDENTIAL" {
   default = ""
 }
 
-variable "TFC_WORKSPACE_NAME" {
+variable "TF_VAR_WORKSPACE_NAME" {
   type    = string
   default = ""
+}
+
+variable "DEFAUL_ZONE" {
+  default = "local.networks.${var.TF_VAR_WORKSPACE_NAME}.0.zone_name"
 }
