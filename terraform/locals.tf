@@ -38,7 +38,7 @@ locals {
 
   # cloud_id     = var.YANDEX_CLOUD_ID
   # folder_id    = var.YANDEX_FOLDER_ID
-  default_zone = local.networks.0.zone_name
+  default_zone = "local.networks.${var.TFC_WORKSPACE_NAME}.0.zone_name"
   dns_zone     = "yc.complife.ru"
   cluster_name = "kube-cluster"
   control_url  = "${local.cluster_name}.${local.dns_zone}"
