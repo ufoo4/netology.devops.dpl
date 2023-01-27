@@ -13,5 +13,5 @@ variable "TF_VAR_YC_CREDENTIAL" {
 
 variable "TFC_WORKSPACE_NAME" {
   type    = list
-  default = ""
+  # default = ""
 }
