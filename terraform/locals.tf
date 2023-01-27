@@ -1,9 +1,9 @@
 locals {
-  ws = var.TFC_WORKSPACE_NAME != "" ? (
-    trimprefix(var.TFC_WORKSPACE_NAME, "yc-")
-    ) : (
-    trimprefix(terraform.workspace, "yc-")
-  )
+  # ws = var.TFC_WORKSPACE_NAME != "" ? (
+  #   trimprefix(var.TFC_WORKSPACE_NAME, "yc-")
+  #   ) : (
+  #   trimprefix(terraform.workspace, "yc-")
+  # )
 
   networks = {
     stage = [
