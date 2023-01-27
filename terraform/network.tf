@@ -1,5 +1,5 @@
 resource "yandex_vpc_network" "net" {
-  name = "net-${var.TFC_WORKSPACE_NAME}"
+  name = "${var.TFC_WORKSPACE_NAME}-net"
 }
 
 resource "yandex_vpc_subnet" "public" {
