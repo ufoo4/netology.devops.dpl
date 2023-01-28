@@ -14,10 +14,10 @@ locals {
       zone_name = "ru-central1-b"
       subnet    = ["10.0.11.0/24"]
     },
-    # {
-    #   zone_name = "ru-central1-c"
-    #   subnet    = ["10.0.12.0/24"]
-    # }
+    {
+      zone_name = "ru-central1-c"
+      subnet    = ["10.0.12.0/24"]
+    }
   ]
 
   # k8s_cluster_resources = {
