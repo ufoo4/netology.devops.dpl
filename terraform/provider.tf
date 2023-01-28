@@ -4,6 +4,15 @@ terraform {
       source = "yandex-cloud/yandex"
     }
   }
+
+  cloud {
+    organization = "netology-dpl"
+    hostname     = "app.terraform.io"
+
+    workspaces {
+      tags = ["netology-dpl"]
+    }
+  }
 }
 
 provider "yandex" {
@@ -12,4 +21,3 @@ provider "yandex" {
   service_account_key_file = var.TF_VAR_YC_CREDENTIAL
   zone                     = local.default_zone
 }
-
