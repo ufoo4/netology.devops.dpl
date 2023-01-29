@@ -52,6 +52,6 @@ resource "yandex_kms_symmetric_key_iam_binding" "viewer" {
   ]
 
   depends_on = [
-    yandex_kms_symmetric_key.kms-key
+    yandex_kms_symmetric_key.kms-key.name
   ]
 }
