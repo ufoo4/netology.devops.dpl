@@ -28,7 +28,7 @@ resource "yandex_resourcemanager_folder_iam_binding" "images-puller" {
 }
 
 resource "yandex_kms_symmetric_key_iam_binding" "viewer" {
-  symmetric_key_id = yandex_kms_symmetric_key.my-kms-key.id
+  symmetric_key_id = yandex_kms_symmetric_key.kms-key.id
   role             = "viewer"
   members = [
     "serviceAccount:${yandex_iam_service_account.k8s-robot.id}",
