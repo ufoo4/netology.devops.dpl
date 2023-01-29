@@ -1,6 +1,6 @@
 resource "yandex_iam_service_account" "k8s-robot" {
-  name        = "k8s-robot"
-  description = "K8S regional service account"
+  name        = "${var.TF_VAR_WORKSPACE_NAME}-k8s-robot"
+  description = "${var.TF_VAR_WORKSPACE_NAME} K8S regional service account"
 }
 
 resource "yandex_resourcemanager_folder_iam_binding" "k8s-clusters-agent" {
@@ -27,6 +27,8 @@ resource "yandex_resourcemanager_folder_iam_binding" "images-puller" {
   ]
 }
 
+
+#### Нужен ли он? Над подумать, а пока потестирую.
 resource "yandex_kms_symmetric_key_iam_binding" "viewer" {
   symmetric_key_id = yandex_kms_symmetric_key.kms-key.id
   role             = "viewer"
