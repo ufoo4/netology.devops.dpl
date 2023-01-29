@@ -45,7 +45,7 @@ resource "yandex_resourcemanager_folder_iam_binding" "images-puller" {
 
 #### Нужен ли он? Над подумать, а пока потестирую.
 resource "yandex_kms_symmetric_key_iam_binding" "viewer" {
-  symmetric_key_id = yandex_kms_symmetric_key.kms-key
+  symmetric_key_id = yandex_kms_symmetric_key.kms-key.name
   role             = "viewer"
   members = [
     "serviceAccount:${yandex_iam_service_account.k8s-robot.name}",
