@@ -24,7 +24,7 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
     }
 
     metadata = {
-      ssh-keys = "ubuntu:${file("./id_rsa.pub")}"
+      ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
 
     }
   }
