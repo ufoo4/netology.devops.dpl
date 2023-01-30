@@ -17,7 +17,7 @@ terraform {
 
 provider "yandex" {
   cloud_id                 = var.YANDEX_CLOUD_ID
-  folder_id                = var.TV_VAR_YANDEX_CLOUD_ID
+  folder_id                = var.TF_VAR_YANDEX_FOLDER_ID
   service_account_key_file = var.TF_VAR_YC_CREDENTIAL
   zone                     = local.default_zone
 }
