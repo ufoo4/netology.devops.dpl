@@ -1,4 +1,5 @@
 resource "yandex_kubernetes_cluster" "k8s-regional-cluster" {
+  name       = local.cluster_name
   network_id = yandex_vpc_network.net.id
   master {
     version = var.K8S_VERSION
@@ -6,11 +7,21 @@ resource "yandex_kubernetes_cluster" "k8s-regional-cluster" {
     regional {
       region = "ru-central1"
       
-      location {
-        count          = local.networks
-        zone      = local.networks[count.index].zone_name
-        # subnet_id = yandex_vpc_subnet.public[count.index]
+      dynamic "location" {
+        for_each = yandex_vpc_subnet.public
+        content {
+          zone = yandex_vpc_subnet.public["${location.key}"].zone
+          subnet_id = yandex_vpc_subnet.public["${location.key}"].id
+        }
       }
+
+
+
+      # location {
+      #   count          = local.networks
+      #   zone      = local.networks[count.index].zone_name
+      #   # subnet_id = yandex_vpc_subnet.public[count.index]
+      # }
     #   location {
     #     zone      = yandex_vpc_subnet.public-subnet-b.zone
     #     subnet_id = yandex_vpc_subnet.public-subnet-b.id
