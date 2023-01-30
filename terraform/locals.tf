@@ -20,42 +20,42 @@ locals {
     }
   ]
 
-  k8s_cluster_resources = {
-    stage = {
-      masters = {
-        count       = 1
-        cpu         = 4
-        memory      = 4
-        disk        = 93
-        disk_type   = "network-ssd-nonreplicated"
-        preemptible = false
-      }
-      workers = {
-        count       = 3
-        cpu         = 2
-        memory      = 4
-        disk        = 20
-        disk_type   = "network-ssd"
-        preemptible = false
-      }
-    }
-    prod = {
-      masters = {
-        count       = 1
-        cpu         = 4
-        memory      = 4
-        disk        = 93
-        disk_type   = "network-ssd-nonreplicated"
-        preemptible = false
-      }
-      workers = {
-        count       = 6
-        cpu         = 2
-        memory      = 4
-        disk        = 20
-        disk_type   = "network-ssd"
-        preemptible = false
-      }
-    }
-  }
+  # k8s_cluster_resources = {
+  #   stage = {
+  #     masters = {
+  #       count       = 1
+  #       cpu         = 4
+  #       memory      = 4
+  #       disk        = 93
+  #       disk_type   = "network-ssd-nonreplicated"
+  #       preemptible = false
+  #     }
+  #     workers = {
+  #       count       = 3
+  #       cpu         = 2
+  #       memory      = 4
+  #       disk        = 20
+  #       disk_type   = "network-ssd"
+  #       preemptible = false
+  #     }
+  #   }
+  #   prod = {
+  #     masters = {
+  #       count       = 1
+  #       cpu         = 4
+  #       memory      = 4
+  #       disk        = 93
+  #       disk_type   = "network-ssd-nonreplicated"
+  #       preemptible = false
+  #     }
+  #     workers = {
+  #       count       = 6
+  #       cpu         = 2
+  #       memory      = 4
+  #       disk        = 20
+  #       disk_type   = "network-ssd"
+  #       preemptible = false
+  #     }
+  #   }
+  # }
 }
