@@ -22,6 +22,7 @@ resource "yandex_vpc_security_group" "k8s-main-sg" {
     v4_cidr_blocks    = local.networks[count.index].subnet
     from_port         = 0
     to_port           = 65535
+    count          = length(local.networks)
   }
   ingress {
     protocol          = "ICMP"
