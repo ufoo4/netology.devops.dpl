@@ -7,8 +7,8 @@ resource "yandex_kubernetes_cluster" "k8s-regional-cluster" {
       region = "ru-central1"
       
       location {
-        zone      = yandex_vpc_subnet.public[count.index]
-        subnet_id = yandex_vpc_subnet.public[count.index]
+        zone      = local.networks[count.index].zone_name
+        # subnet_id = yandex_vpc_subnet.public[count.index]
       }
     #   location {
     #     zone      = yandex_vpc_subnet.public-subnet-b.zone
