@@ -18,7 +18,7 @@ resource "yandex_kubernetes_cluster" "k8s-regional-cluster" {
     #     subnet_id = yandex_vpc_subnet.public-subnet-c.id
     #   }
     }
-    security_group_ids = [yandex_vpc_security_group.k8s-main-sg.id]
+    # security_group_ids = [yandex_vpc_security_group.k8s-main-sg.id]
   }
   service_account_id      = yandex_iam_service_account.k8s-robot.id
   node_service_account_id = yandex_iam_service_account.k8s-robot.id
