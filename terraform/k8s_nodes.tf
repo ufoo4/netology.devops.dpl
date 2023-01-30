@@ -9,7 +9,7 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
 
     resources {
       memory = 2
-      cores  = 1
+      cores  = 2
       core_fraction=20
     }
 
