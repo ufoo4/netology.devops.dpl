@@ -1,6 +1,6 @@
 resource "yandex_iam_service_account" "k8s-robot" {
-  name        = "k8s-robot"
-  description = "K8S regional service account"
+  name        = "${var.TF_VAR_WORKSPACE_NAME}-k8s-robot"
+  description = "K8S regional service account for ${var.TF_VAR_WORKSPACE_NAME}"
 }
 
 resource "yandex_resourcemanager_folder_iam_binding" "k8s-clusters-agent" {
