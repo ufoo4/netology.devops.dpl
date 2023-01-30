@@ -25,6 +25,8 @@ resource "yandex_kubernetes_cluster" "k8s_regional_cluster" {
   }
 
   depends_on = [
+    yandex_vpc_network.net,
+    yandex_vpc_subnet.public,
     yandex_resourcemanager_folder_iam_binding.k8s_clusters_agent,
     yandex_resourcemanager_folder_iam_binding.vpc_public_admin,
     yandex_resourcemanager_folder_iam_binding.images_puller
