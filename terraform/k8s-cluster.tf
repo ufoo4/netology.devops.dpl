@@ -14,22 +14,6 @@ resource "yandex_kubernetes_cluster" "k8s-regional-cluster" {
           subnet_id = yandex_vpc_subnet.public["${location.key}"].id
         }
       }
-
-
-
-      # location {
-      #   count          = local.networks
-      #   zone      = local.networks[count.index].zone_name
-      #   # subnet_id = yandex_vpc_subnet.public[count.index]
-      # }
-    #   location {
-    #     zone      = yandex_vpc_subnet.public-subnet-b.zone
-    #     subnet_id = yandex_vpc_subnet.public-subnet-b.id
-    #   }
-    #   location {
-    #     zone      = yandex_vpc_subnet.public-subnet-c.zone
-    #     subnet_id = yandex_vpc_subnet.public-subnet-c.id
-    #   }
     }
     # security_group_ids = [yandex_vpc_security_group.k8s-main-sg.id]
   }
