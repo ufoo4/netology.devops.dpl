@@ -32,7 +32,7 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
   allocation_policy {
 
     dynamic "location" {
-      for_each = var.avail_zones
+      for_each = yandex_vpc_subnet.public
       content {
         zone   = yandex_vpc_subnet.public["${location.key}"].zone
       }
