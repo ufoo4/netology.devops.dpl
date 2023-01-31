@@ -23,25 +23,25 @@ locals {
   k8s_cluster_resources = {
     stage = {
       workers = {
-        count         = 3
+        scale         = 3
         cpu           = 2
         core_fraction = 20
         memory        = 1
-        disk          = 64
+        disk_size     = 64
         disk_type     = "network-hdd"
-        preemptible   = false
+        # preemptible   = false
         platform_id   = "standard-v3"
       }
     }
     prod = {
       workers = {
-        count         = 6
+        scale         = 6
         cpu           = 2
         core_fraction = 100
         memory        = 4
-        disk          = 64
+        disk_size     = 64
         disk_type     = "network-ssd"
-        preemptible   = false
+        # preemptible   = false
         platform_id   = "standard-v1"
       }
     }

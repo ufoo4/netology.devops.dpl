@@ -8,14 +8,14 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
     platform_id = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.platform_id"
 
     resources {
-      memory = 2
-      cores  = 2
-      core_fraction=20
+      memory        = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.memory"
+      cores         = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.cpu"
+      core_fraction = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.core_fraction"
     }
 
     boot_disk {
-      type = "network-hdd"
-      size = 64
+      type = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.disk_type"
+      size = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.disk_size"
     }
 
     container_runtime {
@@ -44,7 +44,7 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
 
   scale_policy {
     fixed_scale {
-      size = 3
+      size = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.scale"
     }
   }
 
