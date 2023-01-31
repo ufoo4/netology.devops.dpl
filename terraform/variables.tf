@@ -24,14 +24,6 @@ variable "YANDEX_CLOUD_ID" {
   default = "b1gffcps5oa5h9clc5o9"
 }
 
-variable "DEFAUL_ZONE" {
-  default = "local.networks.${var.TF_VAR_WORKSPACE_NAME}.0.zone_name"
-}
-
-variable "CLUSTER_NAME" {
-  default = "${var.TF_VAR_WORKSPACE_NAME}-k8s-regional-cluster"
-}
-
 variable "K8S_VERSION" {
   default = "1.23"
 }

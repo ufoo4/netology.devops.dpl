@@ -1,5 +1,5 @@
 resource "yandex_kubernetes_cluster" "k8s_regional_cluster" {
-  name            = var.CLUSTER_NAME
+  name            = local.cluster_name
   network_id      = yandex_vpc_network.net.id
   release_channel = "STABLE"
   master {
