@@ -27,9 +27,8 @@ locals {
         cpu           = "2"
         core_fraction = "20"
         memory        = "1"
-        disk_size     = "64"
+        disk_size     = ["64"]
         disk_type     = "network-hdd"
-        # preemptible   = false
         platform_id   = "standard-v3"
       }
     }
@@ -41,7 +40,6 @@ locals {
         memory        = 4
         disk_size     = 64
         disk_type     = "network-ssd"
-        # preemptible   = false
         platform_id   = "standard-v1"
       }
     }
