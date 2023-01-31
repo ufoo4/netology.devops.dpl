@@ -5,16 +5,16 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
 
   instance_template {
 
-    platform_id = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.platform_id"
+    platform_id = local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.platform_id
 
     resources {
-      memory        = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.memory"
-      cores         = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.cpu"
-      core_fraction = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.core_fraction"
+      memory        = local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.memory
+      cores         = local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.cpu
+      core_fraction = local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.core_fraction
     }
 
     boot_disk {
-      type = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.disk_type"
+      type = "local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.disk_type"
       size = local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.disk_size
     }
 
@@ -44,7 +44,7 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
 
   scale_policy {
     fixed_scale {
-      size = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.scale"
+      size = local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.scale
     }
   }
 
