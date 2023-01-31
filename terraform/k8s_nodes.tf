@@ -14,7 +14,7 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
     }
 
     boot_disk {
-      type = "local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.disk_type"
+      type = local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.disk_type
       size = local.k8s_cluster_resources[var.TF_VAR_WORKSPACE_NAME].workers.disk_size
     }
 
