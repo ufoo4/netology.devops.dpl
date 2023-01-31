@@ -43,30 +43,5 @@ variable "SERVICE_IPV4_RANGE" {
   default = "10.96.0.0/16"
 }
 
-variable "K8S_CLUSTER_RESOURCES" {
-  stage = {
-    workers = {
-      count         = 3
-      cpu           = 2
-      core_fraction = 20
-      memory        = 1
-      disk          = 64
-      disk_type     = "network-hdd"
-      preemptible   = false
-      platform_id   = "standard-v3"
-    }
-  }
-  prod = {
-    workers = {
-      count         = 6
-      cpu           = 2
-      core_fraction = 100
-      memory        = 4
-      disk          = 64
-      disk_type     = "network-ssd"
-      preemptible   = false
-      platform_id   = "standard-v1"
-    }
-  }
-}
+
 

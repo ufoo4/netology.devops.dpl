@@ -5,7 +5,7 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
 
   instance_template {
 
-    platform_id = "var.K8S_CLUSTER_RESOURCES.${var.TF_VAR_WORKSPACE_NAME}.workers.platform_id"
+    platform_id = "local.k8s_cluster_resources.${var.TF_VAR_WORKSPACE_NAME}.workers.platform_id"
 
     resources {
       memory = 2
