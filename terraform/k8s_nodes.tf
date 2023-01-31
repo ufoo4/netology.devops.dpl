@@ -17,13 +17,13 @@ resource "yandex_kubernetes_node_group" "regional_node_group" {
       type = "network-hdd"
       size = 64
     }
-    
+
     container_runtime {
      type = "containerd"
     }
 
     network_interface {
-      # nat = true
+      nat = true #Позже закоментить!!!
       subnet_ids = [ for subnet in yandex_vpc_subnet.public : subnet.id ]
     }
 

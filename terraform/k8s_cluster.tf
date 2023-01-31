@@ -1,7 +1,9 @@
 resource "yandex_kubernetes_cluster" "k8s_regional_cluster" {
-  name            = local.cluster_name
-  network_id      = yandex_vpc_network.net.id
-  release_channel = "STABLE"
+  name               = local.cluster_name
+  network_id         = yandex_vpc_network.net.id
+  cluster_ipv4_range = var.CLUSTER_IPV4_RANGE
+  service_ipv4_range = var.SERVICE_IPV4_RANGE 
+  release_channel    = "STABLE"
   master {
     version         = var.K8S_VERSION
     public_ip       = true
