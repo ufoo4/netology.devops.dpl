@@ -34,7 +34,7 @@ locals {
     }
     prod = {
       workers = {
-        scale         = 6
+        scale         = 3
         cpu           = 2
         core_fraction = 20
         memory        = 2
