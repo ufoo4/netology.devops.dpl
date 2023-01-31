@@ -25,19 +25,19 @@ locals {
       workers = {
         scale         = 3
         cpu           = 2
-        core_fraction = 20
+        core_fraction = 5
         memory        = 1
         disk_size     = 64
         disk_type     = "network-hdd"
-        platform_id   = "standard-v3"
+        platform_id   = "standard-v1"
       }
     }
     prod = {
       workers = {
         scale         = 6
         cpu           = 2
-        core_fraction = 100
-        memory        = 4
+        core_fraction = 20
+        memory        = 2
         disk_size     = 64
         disk_type     = "network-ssd"
         platform_id   = "standard-v1"
