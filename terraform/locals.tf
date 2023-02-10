@@ -23,7 +23,7 @@ locals {
   k8s_cluster_resources = {
     stage = {
       workers = {
-        scale         = 3
+        scale         = 1
         cpu           = 2
         core_fraction = 5
         memory        = 1
