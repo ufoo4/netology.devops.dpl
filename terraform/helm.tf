@@ -4,6 +4,8 @@ resource "helm_release" "ingress_nginx" {
   chart      = "ingress-nginx"
   version    = "4.2.1"
   wait       = true
+  namespace  = "ingress-nginx"
+  create_namespace = true
   depends_on = [
     yandex_kubernetes_node_group.regional_node_group
   ]
