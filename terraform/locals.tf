@@ -1,9 +1,10 @@
 locals {
   default_zone = "local.networks.${var.TF_VAR_WORKSPACE_NAME}.0.zone_name"
   cluster_name = "${var.TF_VAR_WORKSPACE_NAME}-k8s-regional-cluster"
+  dns_zone     = "yc.dpl.ru"
   # control_url  = "${local.cluster_name}.${local.dns_zone}"
-  # ingress_url  = "${local.cluster_name}-ingress.${local.dns_zone}"
-  # dns_zone     = "yc.complife.ru"
+  url  = "${local.cluster_name}.${local.dns_zone}"
+
 
   networks = [
     {
