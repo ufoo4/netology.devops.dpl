@@ -34,3 +34,15 @@ resource "yandex_kubernetes_cluster" "k8s_regional_cluster" {
     yandex_resourcemanager_folder_iam_binding.images_puller
   ]
 }
+
+data "kubernetes_service" "ingress_nginx_controller" {
+
+  metadata {
+    name      = "ingress-nginx-controller"
+    namespace = "ingress-nginx"
+  }
+}
+
+data "yandex_dns_zone" "dpl" {
+  name = "dpl"
+}

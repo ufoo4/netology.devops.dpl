@@ -24,7 +24,7 @@ locals {
   k8s_cluster_resources = {
     stage = {
       workers = {
-        scale         = 1
+        scale         = 1 # Увеличить до 3 после теста
         cpu           = 2
         core_fraction = 5
         memory        = 1
