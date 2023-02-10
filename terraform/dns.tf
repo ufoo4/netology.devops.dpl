@@ -10,7 +10,7 @@ resource "yandex_dns_recordset" "dns_record_k8s_regional_cluster" {
   name       = local.cluster_name
   type       = "A"
   ttl        = 200
-  data       = [yandex_kubernetes_cluster.k8s_regional_cluster.master[0].external_v4_endpoint]
+  data       = [local.url]
   depends_on = [yandex_kubernetes_cluster.k8s_regional_cluster]
 }
 
