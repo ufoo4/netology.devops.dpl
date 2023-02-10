@@ -2,7 +2,7 @@ resource "yandex_dns_zone" "dns_zone_yc" {
   name             = "dns-zone-yc"
   zone             = "${local.dns_zone}."
   public           = true
-#   private_networks = [yandex_vpc_network.net.id]
+  private_networks = [yandex_vpc_network.net.id]
 }
 
 resource "yandex_dns_recordset" "dns_record_k8s_regional_cluster" {
@@ -10,7 +10,7 @@ resource "yandex_dns_recordset" "dns_record_k8s_regional_cluster" {
   name       = local.cluster_name
   type       = "A"
   ttl        = 200
-  data       = [local.url]
+  data       = yandex_kubernetes_cluster.k8s_regional_cluster.master[0].external_v4_endpoint
   depends_on = [yandex_kubernetes_cluster.k8s_regional_cluster]
 }
 
