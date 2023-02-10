@@ -9,6 +9,6 @@ resource "helm_release" "ingress_nginx" {
   ]
   set {
     name  = "controller.service.loadBalancerIP"
-    value = yandex_vpc_address.addr.external_ipv4_address[0].address
+    value = yandex_kubernetes_cluster.k8s_regional_cluster.master[0].external_v4_endpoint
   }
 }
