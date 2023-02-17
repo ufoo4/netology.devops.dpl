@@ -1,5 +1,5 @@
 resource "yandex_vpc_network" "net" {
-  name = "${var.TF_VAR_WORKSPACE_NAME}-net"
+  name = "${terraform.workspace}-net"
 }
 
 resource "yandex_vpc_subnet" "public" {
@@ -7,5 +7,5 @@ resource "yandex_vpc_subnet" "public" {
   v4_cidr_blocks = local.networks[count.index].subnet
   zone           = local.networks[count.index].zone_name
   network_id     = yandex_vpc_network.net.id
-  name           = "${var.TF_VAR_WORKSPACE_NAME}-${local.networks[count.index].zone_name}"
+  name           = "${terraform.workspace}-${local.networks[count.index].zone_name}"
 }
