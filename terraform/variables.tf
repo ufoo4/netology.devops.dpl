@@ -25,3 +25,10 @@ variable "SERVICE_IPV4_RANGE" {
   default = "10.96.0.0/16"
 }
 
+variable "AGENT_TOKEN" {
+  sensitive = true
+}
+
+variable "KAS_ADDRESS" {
+  default = "wss://kas.gitlab.com"
+}

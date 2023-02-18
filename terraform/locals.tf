@@ -2,7 +2,7 @@ locals {
   default_zone    = "local.networks.0.zone_name"
   cluster_name    = "${terraform.workspace}-k8s-regional-cluster"
   dns_name        = "foo4.ru"
-  argocd_dns_name = "argocd.foo4.ru"
+  argocd_dns_name = "clock-dpl.foo4.ru"
 
   ingress_values = {
     fullnameOverride = "ingress-nginx"
