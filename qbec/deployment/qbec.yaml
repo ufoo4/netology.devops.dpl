@@ -1,0 +1,18 @@
+apiVersion: qbec.io/v1alpha1
+kind: App
+metadata:
+  name: grad-work-app
+spec:
+  environments:
+    stage:
+      defaultNamespace: default
+      server: https://51.250.36.194
+      # excludes:
+      #  - endpoint
+    prod:
+      defaultNamespace: default
+      server: https://51.250.36.194
+    monitoring:
+      defaultNamespace: monitoring
+      server: https://51.250.36.194
+  vars: {}

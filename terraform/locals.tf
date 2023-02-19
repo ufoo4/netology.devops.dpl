@@ -2,7 +2,8 @@ locals {
   default_zone    = "local.networks.0.zone_name"
   cluster_name    = "${terraform.workspace}-k8s-regional-cluster"
   dns_name        = "foo4.ru"
-  argocd_dns_name = "clock-dpl.foo4.ru"
+  mon_dns_name    = "mon.${terraform.workspace}.foo4.ru"
+  app_dns_name    = "app.${terraform.workspace}.foo4.ru"
 
   ingress_values = {
     fullnameOverride = "ingress-nginx"
@@ -40,8 +41,8 @@ locals {
       workers = {
         scale              = 1 #Заменить значение после тестирования
         cpu                = 2
-        core_fraction      = 100 # Заменить значение на 20
-        memory             = 2
+        core_fraction      = 20 # Заменить значение на 20
+        memory             = 6
         disk_size          = 64
         disk_type          = "network-ssd"
         platform_id        = "standard-v1"

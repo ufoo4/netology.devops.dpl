@@ -1,4 +1,4 @@
-### Registry
+### Registry-sa
 resource "yandex_iam_service_account" "registry_agent" {
   name = "${terraform.workspace}-registry-agent"
 }
@@ -13,15 +13,15 @@ resource "yandex_container_registry_iam_binding" "registry_agent_pusher" {
   ]
 }
 
-# resource "yandex_container_registry_iam_binding" "registry_agent_puller" {
-#   registry_id = yandex_container_registry.dpl_registry.id
-#   role        = "container-registry.images.puller"
-#   members     = ["serviceAccount:${yandex_iam_service_account.registry_agent.id}"]
-#   depends_on  = [
-#     yandex_iam_service_account.registry_agent,
-#     yandex_container_registry.dpl_registry
-#   ]
-# }
+resource "yandex_container_registry_iam_binding" "registry_agent_puller" {
+  registry_id = yandex_container_registry.dpl_registry.id
+  role        = "container-registry.images.puller"
+  members     = ["serviceAccount:${yandex_iam_service_account.registry_agent.id}"]
+  depends_on  = [
+    yandex_iam_service_account.registry_agent,
+    yandex_container_registry.dpl_registry
+  ]
+}
 
 resource "yandex_iam_service_account_key" "registry_agent_key" {
   service_account_id = yandex_iam_service_account.registry_agent.id
@@ -31,8 +31,7 @@ resource "yandex_iam_service_account_key" "registry_agent_key" {
   ]
 }
 
-#=============================================================================
-### K8S
+### K8S-sa
 resource "yandex_iam_service_account" "k8s_robot" {
   name        = "${terraform.workspace}-k8s-robot"
   description = "K8S regional service account for ${terraform.workspace}"
