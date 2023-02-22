@@ -30,7 +30,7 @@ locals {
         scale              = 1 #Заменить значение после тестирования
         cpu                = 2
         core_fraction      = 100 # Заменить значение на 5
-        memory             = 2 # Заменить значение на 1
+        memory             = 6 # Заменить значение на 2
         disk_size          = 64
         disk_type          = "network-hdd"
         platform_id        = "standard-v1"

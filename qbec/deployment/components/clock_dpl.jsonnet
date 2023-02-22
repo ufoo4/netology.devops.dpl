@@ -1,5 +1,5 @@
 local p = import '../params.libsonnet';
-local params = p.components.app;
+local params = p.components.clock_dpl;
 local env = {
   namespace: std.extVar('qbec.io/env'),
 };
@@ -16,10 +16,10 @@ local imageTag = std.extVar('image_tag');
       "app.kubernetes.io/name": params.name
     },
     "name": params.name,
-    "namespace": env.namespace
+    "namespace": params.namespace
   },
   "spec": {
-    "replicas": 1,
+    "replicas": params.replicas,
     "selector": {
       "matchLabels": {
         "app.kubernetes.io/component": params.name,
@@ -62,7 +62,7 @@ local imageTag = std.extVar('image_tag');
       "app.kubernetes.io/name": params.name
     },
     "name": params.name,
-    "namespace": env.namespace
+    "namespace": params.namespace
   },
   "spec": {
     "type": "ClusterIP",
@@ -84,24 +84,23 @@ local imageTag = std.extVar('image_tag');
   "apiVersion": "networking.k8s.io/v1",
   "kind": "Ingress",
   "metadata": {
-    "name": "web-app-ingress",
     "annotations": {
-      "kubernetes.io/ingress.class": "nginx",
-      "ingress.alb.yc.io/external-ipv4-address": "84.201.156.92"
-    }
+      "kubernetes.io/ingress.class": "nginx"
+    },
+    "name": params.name
   },
   "spec": {
     "defaultBackend": {
       "service": {
-        "name": "web-app",
+        "name": params.name,
         "port": {
-          "number": 80
+          "number": params.ports.containerPort
         }
       }
     },
     "rules": [
       {
-        "host": "app.prod.foo4.ru",
+        "host": "app.stage.foo4.ru",
         "http": {
           "paths": [
             {
@@ -109,9 +108,9 @@ local imageTag = std.extVar('image_tag');
               "pathType": "Prefix",
               "backend": {
                 "service": {
-                  "name": "web-app",
+                  "name": params.name,
                   "port": {
-                    "number": 80
+                    "number": params.service.port
                   }
                 }
               }

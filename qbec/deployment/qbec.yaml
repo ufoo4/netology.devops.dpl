@@ -1,18 +1,19 @@
 apiVersion: qbec.io/v1alpha1
 kind: App
 metadata:
-  name: grad-work-app
+  name: clock-dpl
 spec:
   environments:
     stage:
-      defaultNamespace: default
-      server: https://51.250.36.194
-      # excludes:
-      #  - endpoint
+      defaultNamespace: app
+      server: https://84.201.135.197
     prod:
-      defaultNamespace: default
-      server: https://51.250.36.194
-    monitoring:
+      defaultNamespace: app
+      server: https://0.0.0.0
+    monitoring-stage:
       defaultNamespace: monitoring
-      server: https://51.250.36.194
+      server: https://84.201.135.197
+    monitoring-prod:
+      defaultNamespace: monitoring
+      server: https://0.0.0.0
   vars: {}
