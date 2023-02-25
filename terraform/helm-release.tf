@@ -38,6 +38,64 @@ data "kubernetes_service" "ingress_nginx" {
   ]
 }
 
+resource "helm_release" "cert_manager" {
+  name             = "cert-manager"
+  repository       = "https://charts.jetstack.io"
+  chart            = "cert-manager"
+  namespace        = "cert-manager"
+  create_namespace = true
+  values = [
+    <<-EOF
+    installCRDs: true
+    prometheus:
+      enabled: false
+      servicemonitor:
+        enabled: false
+    clusterResourceNamespace: cert-manager
+    extraArgs:
+      - --cluster-resource-namespace=cert-manager
+  EOF
+  ]
+
+  depends_on = [
+    data.kubernetes_service.ingress_nginx
+  ]
+}
+
+resource "helm_release" "cert_manager_issuer" {
+  name       = "cert-manager-issuer"
+  repository = "https://charts.helm.sh/incubator"
+  chart      = "raw"
+  values = [
+    <<-EOF
+    resources:
+      - apiVersion: cert-manager.io/v1
+        kind: ClusterIssuer
+        metadata:
+          name: letsencrypt-prod
+          namespace: cert-manager
+        spec:
+          acme:
+            email: u.foo@outlook.com
+            server: https://acme-v02.api.letsencrypt.org/directory
+            privateKeySecretRef:
+              name: letsencrypt-prod
+            solvers:
+            - http01:
+                ingress:
+                  ingressTemplate:
+                    metadata:
+                      annotations:
+                        kubernetes.io/ingress.class: nginx
+    EOF
+  ]
+  
+  depends_on = [
+    helm_release.cert_manager
+  ]
+}
+
+
 # resource "helm_release" "cert_manager" {
 #   repository       = "https://charts.jetstack.io"
 #   chart            = "cert-manager"
@@ -54,7 +112,7 @@ data "kubernetes_service" "ingress_nginx" {
 #   }
 
 #   depends_on = [
-#     helm_release.ingress_nginx
+#     data.kubernetes_service.ingress_nginx
 #   ]
 # }
 
