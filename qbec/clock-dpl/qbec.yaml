@@ -6,13 +6,13 @@ spec:
   environments:
     stage:
       defaultNamespace: app
-      server: https://51.250.34.51
+      server: https://62.84.114.57
     prod:
       defaultNamespace: app
-      server: https://51.250.34.51
+      server: https://51.250.85.101
     # monitoring-stage:
     #   defaultNamespace: monitoring
-    #   server: https://51.250.33.151
+    #   server: https://0.0.0.0
     # monitoring-prod:
     #   defaultNamespace: monitoring
     #   server: https://0.0.0.0
