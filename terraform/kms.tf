@@ -1,4 +1,3 @@
-## Позже удалю...
 resource "yandex_kms_symmetric_key" "kms_key" {
   name              = "${terraform.workspace}-symetric-key"
   description       = "symetric key"

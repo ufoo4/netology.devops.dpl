@@ -27,10 +27,10 @@ locals {
   k8s_cluster_resources = {
     stage = {
       workers = {
-        scale              = 1 #Заменить значение после тестирования
+        scale              = 1
         cpu                = 2
-        core_fraction      = 100 # Заменить значение на 5
-        memory             = 6 # Заменить значение на 2
+        core_fraction      = 20
+        memory             = 4
         disk_size          = 64
         disk_type          = "network-hdd"
         platform_id        = "standard-v1"
@@ -39,10 +39,10 @@ locals {
     }
     prod = {
       workers = {
-        scale              = 1 #Заменить значение после тестирования
+        scale              = 3
         cpu                = 2
-        core_fraction      = 20 # Заменить значение на 20
-        memory             = 6
+        core_fraction      = 20
+        memory             = 4
         disk_size          = 64
         disk_type          = "network-ssd"
         platform_id        = "standard-v1"
