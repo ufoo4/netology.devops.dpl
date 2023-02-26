@@ -94,39 +94,3 @@ resource "helm_release" "cert_manager_issuer" {
     helm_release.cert_manager
   ]
 }
-
-
-# resource "helm_release" "cert_manager" {
-#   repository       = "https://charts.jetstack.io"
-#   chart            = "cert-manager"
-#   version          = "1.11.0"
-#   namespace        = "cert-manager"
-#   name             = "cert-manager"
-#   create_namespace = true
-#   cleanup_on_fail  = true
-#   # values           = [file("./values/cert-manager.yml")]
-  
-#   set {
-#     name  = "installCRDs"
-#     value = true
-#   }
-
-#   depends_on = [
-#     data.kubernetes_service.ingress_nginx
-#   ]
-# }
-
-# resource "helm_release" "cert_manager_issuers" {
-#   repository       = "https://charts.helm.sh/incubator"
-#   chart            = "raw"
-#   namespace        = "cert-manager"
-#   name             = "cert-manager-issuers"
-#   wait             = false
-#   create_namespace = true
-#   cleanup_on_fail  = true
-#   values           = [file("./values/cert-manager-issuers.yml")]
-
-#   depends_on = [
-#     helm_release.cert_manager
-#   ]
-# }

@@ -1,4 +1,4 @@
-### Registry-sa
+## Registry-sa
 resource "yandex_iam_service_account" "registry_agent" {
   name = "${terraform.workspace}-registry-agent"
 }
@@ -13,15 +13,15 @@ resource "yandex_container_registry_iam_binding" "registry_agent_pusher" {
   ]
 }
 
-resource "yandex_container_registry_iam_binding" "registry_agent_puller" {
-  registry_id = yandex_container_registry.dpl_registry.id
-  role        = "container-registry.images.puller"
-  members     = ["serviceAccount:${yandex_iam_service_account.registry_agent.id}"]
-  depends_on  = [
-    yandex_iam_service_account.registry_agent,
-    yandex_container_registry.dpl_registry
-  ]
-}
+# resource "yandex_container_registry_iam_binding" "registry_agent_puller" {
+#   registry_id = yandex_container_registry.dpl_registry.id
+#   role        = "container-registry.images.puller"
+#   members     = ["serviceAccount:${yandex_iam_service_account.registry_agent.id}"]
+#   depends_on  = [
+#     yandex_iam_service_account.registry_agent,
+#     yandex_container_registry.dpl_registry
+#   ]
+# }
 
 resource "yandex_iam_service_account_key" "registry_agent_key" {
   service_account_id = yandex_iam_service_account.registry_agent.id
@@ -36,6 +36,15 @@ resource "yandex_iam_service_account" "k8s_robot" {
   name        = "${terraform.workspace}-k8s-robot"
   description = "K8S regional service account for ${terraform.workspace}"
 }
+
+### ДЛЯ ТЕСТА
+# resource "yandex_resourcemanager_folder_iam_binding" "admin" {
+#   folder_id = var.YANDEX_FOLDER_ID
+#   role      = "admin"
+#   members = [
+#     "serviceAccount:${yandex_iam_service_account.k8s_robot.id}"
+#   ]
+# }
 
 resource "yandex_resourcemanager_folder_iam_binding" "k8s_clusters_agent" {
   folder_id = var.YANDEX_FOLDER_ID
@@ -68,6 +77,14 @@ resource "yandex_resourcemanager_folder_iam_binding" "images_puller" {
     "serviceAccount:${yandex_iam_service_account.k8s_robot.id}"
   ]
 }
+
+# resource "yandex_resourcemanager_folder_iam_binding" "images_pusher" {
+#   folder_id = var.YANDEX_FOLDER_ID
+#   role      = "container-registry.images.pusher"
+#   members = [
+#     "serviceAccount:${yandex_iam_service_account.k8s_robot.id}"
+#   ]
+# }
 
 resource "yandex_kms_symmetric_key_iam_binding" "viewer" {
   symmetric_key_id = yandex_kms_symmetric_key.kms_key.id
