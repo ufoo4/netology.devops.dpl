@@ -30,7 +30,7 @@ locals {
         scale              = 1
         cpu                = 2
         core_fraction      = 20
-        memory             = 4
+        memory             = 5
         disk_size          = 64
         disk_type          = "network-hdd"
         platform_id        = "standard-v1"
@@ -42,7 +42,7 @@ locals {
         scale              = 3
         cpu                = 2
         core_fraction      = 20
-        memory             = 4
+        memory             = 5
         disk_size          = 64
         disk_type          = "network-ssd"
         platform_id        = "standard-v1"

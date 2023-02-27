@@ -1,0 +1,13 @@
+apiVersion: qbec.io/v1alpha1
+kind: App
+metadata:
+  name: clock-dpl
+spec:
+  environments:
+    stage:
+      defaultNamespace: app
+      server: https://51.250.44.149
+    prod:
+      defaultNamespace: app
+      server: https://51.250.33.121
+  vars: {}
