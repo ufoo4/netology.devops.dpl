@@ -1,6 +1,6 @@
 ## Интро
 
-Тут расположены файлы, которые за'push'енны в репозиторий [githab.com](https://gitlab.com/ntlg-dpl)
+Тут расположены файлы, которые за'push'енны в репозиторий [gitlab.com](https://gitlab.com/ntlg-dpl)
 
 
 <br>
